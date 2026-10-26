@@ -1,0 +1,14 @@
+{
+  "name": "panda-gomoku",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-10-25",
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "panda-gomoku-db",
+      "database_id": "101fd24d-6156-4db1-9359-2773c15f5302",
+      "migrations_dir": "drizzle"
+    }
+  ]
+}
