@@ -1,0 +1,5 @@
+export const SIZE=15;
+export function createGame(){return {board:Array(225).fill(0),turn:1,moves:0,winner:0,line:[],draw:false};}
+export function winningLine(board,index){const r=Math.floor(index/SIZE),c=index%SIZE,p=board[index];if(!p)return [];for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]){const line=[index];for(const sign of [-1,1]){let y=r+dr*sign,x=c+dc*sign;while(y>=0&&y<SIZE&&x>=0&&x<SIZE&&board[y*SIZE+x]===p){line.push(y*SIZE+x);y+=dr*sign;x+=dc*sign;}}if(line.length>=5)return line;}return [];}
+export function place(game,index){if(!Number.isInteger(index)||index<0||index>=225||game.board[index]||game.winner||game.draw)return false;game.board[index]=game.turn;game.moves++;game.line=winningLine(game.board,index);game.winner=game.line.length?game.turn:0;game.draw=!game.winner&&game.moves===225;if(!game.winner&&!game.draw)game.turn=3-game.turn;return true;}
+export function hasThreat(game,player){return game.board.some((v,i)=>{if(v)return false;game.board[i]=player;const win=winningLine(game.board,i).length>0;game.board[i]=0;return win;});}

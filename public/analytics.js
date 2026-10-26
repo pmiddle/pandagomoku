@@ -1,0 +1,1 @@
+export function track(event,details={}){if(['localhost','127.0.0.1'].includes(location.hostname))console.info('[Panda Gomoku]',event,details);window.dispatchEvent(new CustomEvent('panda:analytics',{detail:{event,...details}}));window.pandaAnalytics?.(event,details);}
