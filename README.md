@@ -2,19 +2,6 @@
 
 A lightweight vanilla JavaScript game with original panda illustrations. No accounts, chat, paid AI, inference API, or frontend secrets.
 
-## Run locally
-
-Requires Node.js 22.13+ (24 recommended). No dependency installation is needed.
-
-    npm run dev
-
-Open http://127.0.0.1:5173. The development server provides the same room API as production using a persistent SQLite file at `.local/rooms.sqlite`. To test two player identities on this computer, host on `127.0.0.1:5173` and join on `localhost:5173` with the same room code. These are independent browser storage origins, connected to the same server. Two ordinary tabs on the same origin share the same saved player identity.
-
-    npm test
-    npm run build
-
-The build emits a self-contained Cloudflare Worker at `dist/server/index.js`, with the frontend embedded. `.openai/hosting.json` binds managed D1 as `DB`. SQL migrations live in `drizzle/` and are packaged for Sites to apply on deployment. The local SQLite adapter is excluded from the hosted Worker.
-
 ## Modes
 
 - **With a Friend:** create or join a six-character room. Copy its code or an invite such as `/play?room=ABC234`. The guest joins automatically from the link. The room begins when both players have arrived.
